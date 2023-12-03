@@ -208,7 +208,7 @@ void recebenomejogadores(char nome1[], char nome2[]) {
     fflush(stdin);
 }
 
-void tiraenter (char nome[]) {
+void tiraenter (char nome[]) { // Retira o \n da string para melhorar a visualização para o usuário quando seu nome é colocado na tela.
     for (int i = 0; nome[i] != '\0'; i++) {
         if (nome[i] == '\n') {
             nome[i] = '\0';
