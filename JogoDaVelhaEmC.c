@@ -182,7 +182,7 @@ int testaganhador (char matriz[3][3], int l, int c, char letra) {
     return 0;
 }
 
-int testaescolha (int matriz1[3][3], char matriz2[3][3], int jogada) {
+int testaescolha (int matriz1[3][3], char matriz2[3][3], int jogada) { // Percorre toda a matriz e verifica, retornando 1, se a posição escolhida pelo usuário já contém x ou o, o que significa que a posição já havia sido escolhida. Caso contrário, se a posição é válida, retorna 0.
     for (int l = 0; l < 3; l++) {
         for (int c = 0; c < 3; c++) {
             if (matriz1[l][c] == jogada) {
