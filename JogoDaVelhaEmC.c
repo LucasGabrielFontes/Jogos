@@ -248,7 +248,7 @@ void mostramatriz (int matriz1[3][3], char matriz2[3][3]) {
     }
 }
 
-void mostramatrizchar (char matriz[3][3]) {
+void mostramatrizchar (char matriz[3][3]) { // Mostra, apenas, a matriz do tipo char (que está dentro de um struct) para o usuário.
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
             printf("%c ", matriz[i][j]);
