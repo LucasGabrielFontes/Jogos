@@ -31,7 +31,7 @@ int main () {
     return 0;
 }
 
-void jogo (int matriznum[3][3], char matrizle[3][3]) {
+void jogo (int matriznum[3][3], char matrizle[3][3]) { // Coordena o jogo todo.
     char resposta, testejogadores, jogador1[TAM], jogador2[TAM];
     int i;
     recebenomejogadores(jogador1, jogador2);
@@ -55,7 +55,7 @@ void jogo (int matriznum[3][3], char matrizle[3][3]) {
         scanf("%c", &resposta);
         fflush(stdin);
         if (tolower(resposta) == 's') {
-            printf("\n\nSerao os mesmos dois jogadores? [S/N]: ");
+            printf("\n\nSerao os mesmos dois jogadores? [S/N]: "); // Caso a resposta seja 's', o nome dos jogadores não é modificado.
             scanf("%c", &testejogadores);
             fflush(stdin);
             if (tolower(testejogadores) == 'n') {
@@ -67,7 +67,7 @@ void jogo (int matriznum[3][3], char matrizle[3][3]) {
     } while (toupper(resposta) == 'S');
 }
 
-int vezjogador(char nome[], char letra, int numerojogada, int *linha, int *coluna, int matriznum[3][3], char matrizle[3][3]) {
+int vezjogador(char nome[], char letra, int numerojogada, int *linha, int *coluna, int matriznum[3][3], char matrizle[3][3]) { // Coordenada as rodadas do jogo.
     int jogada;
     printf("\nVez de %s!\n\n", nome);
     mostramatriz(matriznum, matrizle);
@@ -84,7 +84,7 @@ int vezjogador(char nome[], char letra, int numerojogada, int *linha, int *colun
         scanf("%d", &jogada);
         fflush(stdin);
     }
-    for (int l = 0; l < 3; l++) {
+    for (int l = 0; l < 3; l++) { // Preenche o local escolhido com 'o' ou 'x', após a posição ser validada, e armazena os índices da linha e da coluna para enviar como parâmetros para a função testa ganhador.
         for (int c = 0; c < 3; c++) {
             if (matriznum[l][c] == jogada) {
                 matrizle[l][c] = letra;
@@ -93,15 +93,15 @@ int vezjogador(char nome[], char letra, int numerojogada, int *linha, int *colun
             }
         }
     }
-    if (numerojogada >= 5) {
-        if (testaganhador(matrizle, *linha, *coluna, letra)) {
+    if (numerojogada >= 5) { // Só pode haver um ganhador a partir da quinta rodada.
+        if (testaganhador(matrizle, *linha, *coluna, letra)) { 
             printf("\n%s E O(A) VENCEDOR(A)!\n\n", nome);
             mostramatrizchar(matrizle);
             printf("\n");
             return 1;
         }
     }
-    if (numerojogada == 9) {
+    if (numerojogada == 9) { // Se o jogo finalizar a rodada 9 e não houver ganhador, deu velha.
         printf("\nDEU VELHA!\n\n");
         mostramatrizchar(matrizle);
         printf("\n");
