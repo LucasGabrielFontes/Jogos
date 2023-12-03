@@ -217,7 +217,7 @@ void tiraenter (char nome[]) {
     }
 }
 
-void preenchematrizchar (char matriz[3][3]) {
+void preenchematrizchar (char matriz[3][3]) { // Preenche as células da matriz char com espaços em branco para evitar erros de verificação no código.
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
             matriz[i][j] = ' ';
@@ -225,7 +225,7 @@ void preenchematrizchar (char matriz[3][3]) {
     }
 }
 
-void preenchematrizint (int matriz[][3]) { // Apenas preenche as células da matriz com números de 1 a 9, a fim de que o usuário possa localizar a posição que deseja jogar.
+void preenchematrizint (int matriz[][3]) { // Preenche as células da matriz int com números de 1 a 9, a fim de que o usuário possa localizar a posição que deseja jogar.
     int a = 1;
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
