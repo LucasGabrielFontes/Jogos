@@ -238,7 +238,7 @@ void preenchematrizint (int matriz[][3]) {
 void mostramatriz (int matriz1[3][3], char matriz2[3][3]) { // Mostra, de maneira mesclada, as duas matrizes do tipo struct, tanto a int quanto a char, a depender da situação.
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
-            if ((matriz2[i][j] == 'o') || (matriz2[i][j] == 'x')) { // Se o usuário já colocou o X ou a bola na posição, isso será mostrado.
+            if ((matriz2[i][j] == 'o') || (matriz2[i][j] == 'x')) { // Se o usuário já colocou o X ou a BOLA na posição, isso será mostrado.
                 printf("%c ", matriz2[i][j]);
             } else {
                 printf("%d ", matriz1[i][j]); // No entanto, se a posição ainda não foi utilizada, será mostrado o número que a localiza.
