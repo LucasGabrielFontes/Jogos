@@ -108,25 +108,25 @@ void recebenomejogadores(char nome1[], char nome2[]) {
 
 int testaganhador (char matriz[3][3], int l, int c, char letra) { // A partir da quinta jogada, testa, a cada rodada, se algum jogador venceu.
     int teste = 0; // A variável teste, quando atinge o valor 3, indica que houve ganhador.
-    for (int j = 0; j < 3; j++) { // Verifica se a linha da jogada está preenchida com 'x' ou 'o'.
+    for (int j = 0; j < 3; j++) { // Verifica se a linha da jogada está totalmente preenchida com 'x' ou 'o'.
         if (matriz[l][j] == letra) {
             teste += 1;
         }
     }
     if (teste == 3) {
-        for (int j = 0; j < 3; j++) { // Caso a linha esteja preenchida por 'x' ou 'o', todos os seus valores são trocados por '-' para indicar aos jogadores que a vitória se deu nela.
+        for (int j = 0; j < 3; j++) { // Caso a linha esteja totalmente preenchida somente por 'x' ou 'o', todos os seus valores são trocados por '-' para indicar aos jogadores que a vitória se deu nela.
             matriz[l][j] = '-';
         }
         return 1;
     }
     teste = 0;
-    for (int i = 0; i < 3; i++) { // Verifica se a coluna da jogada está preenchida com 'x' ou 'o'.
+    for (int i = 0; i < 3; i++) { // Verifica se a coluna da jogada está totalmente preenchida com 'x' ou 'o'.
         if (matriz[i][c] == letra) {
             teste += 1;
         }
     }
     if (teste == 3) {
-        for (int i = 0; i < 3; i++) { // Caso a coluna esteja preenchida por 'x' ou 'o', todos os seus valores são trocados por '|' para indicar aos jogadores que a vitória se deu nela.
+        for (int i = 0; i < 3; i++) { // Caso a coluna esteja totalmente preenchida somente por 'x' ou 'o', todos os seus valores são trocados por '|' para indicar aos jogadores que a vitória se deu nela.
             matriz[i][c] = '|';
         }
         return 1;
@@ -143,7 +143,7 @@ int testaganhador (char matriz[3][3], int l, int c, char letra) { // A partir da
             }
         }
     }
-    if (teste == 3) { // Caso a diagonal principal esteja preenchida por 'x' ou 'o', todos os seus valores são trocados por '`' para indicar aos jogadores que a vitória se deu nela.
+    if (teste == 3) { // Caso a diagonal principal esteja totalmente preenchida somente por 'x' ou 'o', todos os seus valores são trocados por '`' para indicar aos jogadores que a vitória se deu nela.
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 if (i == j) {
@@ -165,7 +165,7 @@ int testaganhador (char matriz[3][3], int l, int c, char letra) { // A partir da
             }
         }
     }
-    if (teste == 3) { // Caso a diagonal secundária esteja preenchida por 'x' ou 'o', todos os seus valores são trocados por '/' para indicar aos jogadores que a vitória se deu nela.
+    if (teste == 3) { // Caso a diagonal secundária esteja totalmente preenchida somente por 'x' ou 'o', todos os seus valores são trocados por '/' para indicar aos jogadores que a vitória se deu nela.
         int a = 0, b = 2;
         for (; a < 3; a++) { 
             if (matriz[a][b] == letra) {
@@ -178,7 +178,7 @@ int testaganhador (char matriz[3][3], int l, int c, char letra) { // A partir da
     return 0; // Se a variável teste não chegar ao valor 3 até o fim, significa que não houve ganhador na rodada, e a função retorna 0.
 }
 
-int testaescolha (int matriz1[3][3], char matriz2[3][3], int jogada) { // Percorre toda a matriz e verifica, retornando 1, se a posição escolhida pelo usuário já contém x ou o, o que significa que a posição já havia sido escolhida. Caso contrário, se a posição é válida, retorna 0.
+int testaescolha (int matriz1[3][3], char matriz2[3][3], int jogada) { // Percorre toda a matriz e verifica, retornando 1, se a posição escolhida pelo usuário já contém 'x' ou 'o', o que significa que a posição já havia sido escolhida. Caso contrário, se a posição é válida, retorna 0.
     for (int l = 0; l < 3; l++) {
         for (int c = 0; c < 3; c++) {
             if (matriz1[l][c] == jogada) {
@@ -199,7 +199,7 @@ int vezjogador(char nome[], char letra, int numerojogada, int *linha, int *colun
     if (letra == 'x') {
         printf("Escolha uma posicao para jogar o X: ");
     } else {
-        printf("Escolha uma posicao para jogar o BOLA: ");
+        printf("Escolha uma posicao para jogar a BOLA: ");
     }
     scanf("%d", &jogada);
     fflush(stdin);
@@ -208,7 +208,7 @@ int vezjogador(char nome[], char letra, int numerojogada, int *linha, int *colun
         scanf("%d", &jogada);
         fflush(stdin);
     }
-    for (int l = 0; l < 3; l++) { // Preenche o local escolhido com 'o' ou 'x', após a posição ser validada, e armazena os índices da linha e da coluna para enviar como parâmetros para a função testa ganhador.
+    for (int l = 0; l < 3; l++) { // Preenche o local escolhido com 'o' ou 'x', após a posição ser validada, e armazena os índices da linha e da coluna para enviar como parâmetros para a função testaganhador.
         for (int c = 0; c < 3; c++) {
             if (matriznum[l][c] == jogada) {
                 matrizle[l][c] = letra;
@@ -238,7 +238,7 @@ void jogo (int matriznum[3][3], char matrizle[3][3]) { // Coordena o jogo todo.
     char resposta, testejogadores, jogador1[TAM], jogador2[TAM];
     int i;
     recebenomejogadores(jogador1, jogador2);
-    do {
+    do { 
         preenchematrizchar(matrizle);
         int linha, coluna;
         for (i = 1; i <= 9; i++) {
@@ -267,5 +267,5 @@ void jogo (int matriznum[3][3], char matrizle[3][3]) { // Coordena o jogo todo.
         } else {
             printf("\nObrigado por jogar o O JOGO DA VELHA! Ate mais!\n");
         }
-    } while (toupper(resposta) == 'S');
+    } while (toupper(resposta) == 'S'); // Enquanto os jogadores responderem com 'S', o jogo continuará com novas rodadas.
 }
